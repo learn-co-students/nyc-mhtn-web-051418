@@ -1,0 +1,4 @@
+<form method="post" action="/books/<%= book.id %>">
+  <input type="hidden" name="_method" value="PUT">
+  <%= erb :"books/form", locals: { book: book } %>
+</form>

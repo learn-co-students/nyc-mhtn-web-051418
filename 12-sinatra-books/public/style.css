@@ -1,0 +1,34 @@
+body {
+  font-size: 48px;
+}
+
+.site-header {
+  padding: 20px;
+  background: pink;
+  color: purple;
+  text-align: center;
+}
+
+.site-header {
+  padding: 20px;
+  background: pink;
+  color: purple;
+}
+.content {
+  background: peachpuff;
+  color: orange;
+  padding: 20px;
+}
+label {
+  margin-bottom: 20px;
+}
+input {
+  display: block;
+  margin-bottom: 40px;
+  padding: 5px 10px;
+  border-width: 5px;
+}
+input[type=submit] {
+  background: skyblue;
+  color: blue;
+}

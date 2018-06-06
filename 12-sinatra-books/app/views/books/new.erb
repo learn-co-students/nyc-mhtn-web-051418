@@ -1,0 +1,6 @@
+<form method="post" action="/books">
+  Errors: <%= errors %>
+  Foo: <%= foo %>
+  Book: <%= book %>
+  <%= erb :"books/form", locals: { book: book } %>
+</form>

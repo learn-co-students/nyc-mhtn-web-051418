@@ -1,0 +1,13 @@
+Read:
+  List of books: GET /books 
+  Show a book: GET /books/:id
+Create:
+  Form to create a book: GET /books/new
+  Create a book: POST /books
+Update:
+  Form to edit a book: GET /books/:id/edit
+  Update a book: PATCH or PUT /books/:id
+Delete:
+  Delete a book: DELETE /books/:id
+
+
