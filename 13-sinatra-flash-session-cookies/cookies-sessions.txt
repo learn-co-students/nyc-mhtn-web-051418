@@ -1,0 +1,11 @@
+gotchas — you need two gems: `sinatra-contrib` for cookies and `sinatra-flash` for flash
+
+we need to do the following in our configure block in `ApplicationController.rb`:
+```helpers Sinatra::Cookies # this is the sinatra cookies module
+    register Sinatra::Flash  # this is for flash```
+more on what `helpers` and `register` do here: http://sinatrarb.com/extensions.html
+I also have three helper modules now — one for cookies, one for sessions, one for flash — those depend on the `require_all 'app/helpers'` in `ApplicationController` and the `helpers CookieHelpers, SessionHelpers, FlashHelpers` call in the configure block
+The functionality: 
+1. We store a cookie (still potatopancakes) with a boolean in it that says whether we’ve seen the user before — so we greet users who show up with no potatopancakes cookie, and we welcome back users who HAVE the cookie
+2. We can favorite books, and their IDs are stored in the session. As we iterate, we show whether the book has been favorited or a form to favorite it (POST to `/books/:id/favorites`)
+3. We set a key in the flash to the title of the book on `/books/:id/favorites`, and then check that same key on `/books`. Values in flash automatically disappear after 1 request, so it will only show up on the subsequent (redirected) request to `/books`. If we have a title in the flash, we’ll show a message saying we just favorited that title.
