@@ -1,0 +1,31 @@
+
+<% if @welcomed %>
+  Welcome back!
+  <% else %>
+  Hello! Welcome!
+<% end %>
+
+
+<% if @favorited %>
+  You just favorited <%= @favorited %>!
+<% end %>
+
+
+<ul>
+  <% @books.each do |book| %>
+    <li>
+      <a href="/books/<%= book.id %>"><%= book.title %></a>
+      <% if book_is_favorite(book.id) # see SessionHelper %>
+        LOVES IT 💁
+      <% else %>
+        <form action="/books/<%= book.id %>/favorites" method="POST" >
+          <input type="submit" value="favorite" />
+        </form>
+      <% end %>
+      <br>
+      <a href="/authors/<%= book.author_id %>"><%= book.author.name %></a>
+      <br>
+      <%= book.snippet %>
+    </li>
+  <% end %>
+</ul>
