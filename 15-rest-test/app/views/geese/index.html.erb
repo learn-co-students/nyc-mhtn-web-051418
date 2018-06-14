@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Geese</h1>
+
+<ol>
+  <% @geese.each do |goose| %>
+    <li>
+      <%= link_to goose.name, goose %>
+      <%= link_to 'Edit', edit_goose_path(goose) %>
+      <%= form_with model: goose, method: "delete", local: true do %><%= submit_tag "Delete" %><% end %>
+    </li>
+  <% end %>
+</ol>
+
+
+<%= link_to 'New Goose', new_goose_path %>

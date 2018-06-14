@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @octopus.name %>
+</p>
+
+<p>
+  <strong>Legs:</strong>
+  <%= @octopus.legs %>
+</p>
+
+<%= link_to 'Edit', edit_octopus_path(@octopus) %> |
+<%= link_to 'Back', octopuses_path %>

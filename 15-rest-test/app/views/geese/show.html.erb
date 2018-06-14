@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @goose.name %>
+</p>
+
+<p>
+  <strong>People chased today:</strong>
+  <%= @goose.people_chased_today %>
+</p>
+
+<%= link_to 'Edit', edit_goose_path(@goose) %> |
+<%= link_to 'Back', geese_path %>

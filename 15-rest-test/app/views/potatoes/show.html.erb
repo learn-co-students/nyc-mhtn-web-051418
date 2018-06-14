@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @potato.name %>
+</p>
+
+<p>
+  <strong>Eyes:</strong>
+  <%= @potato.eyes %>
+</p>
+
+<%= link_to 'Edit', edit_potato_path(@potato) %> |
+<%= link_to 'Back', potatoes_path %>

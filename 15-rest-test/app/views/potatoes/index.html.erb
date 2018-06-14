@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Potatoes</h1>
+<ol>
+  <% @potatoes.each do |potato| %>
+    <li>
+      <%= link_to potato.name, potato %>
+      <%= link_to 'Edit', edit_potato_path(potato) %>
+      <%= form_with model: potato, method: "delete", local: true do %><%= submit_tag "Delete" %><% end %>
+    </li>
+  <% end %>
+</ol>
+
+
+<%= link_to 'New Potato', new_potato_path %>

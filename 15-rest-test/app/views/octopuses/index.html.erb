@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Octopuses</h1>
+  <ol>
+    <% @octopuses.each do |octopus| %>
+      <li>
+        <%= link_to octopus.name, octopus %>
+        <%= link_to 'Edit', edit_octopus_path(octopus) %>
+        <%= form_with model: octopus, method: "delete", local: true do %><%= submit_tag "Delete" %><% end %>
+      </li>
+    <% end %>
+  </ol>
+
+<%= link_to 'New Octopus', new_octopus_path %>
