@@ -1,0 +1,10 @@
+- Inflector
+- Forms
+  - form_tag
+  - form_for
+  - form_with
+- Validations
+- Strong params
+- Turbolinks
+  --skip-turbolinks
+- Scaffold

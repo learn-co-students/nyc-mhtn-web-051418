@@ -1,0 +1,12 @@
+<%= flash[:errors] %>
+
+<%= form_with model: @platypus do |form| %>
+  
+  <label>Age</label>
+  <%= form.text_field :age %>
+  <label>Eggs</label>
+  <%= form.text_field :number_of_eggs %>
+  <%= form.submit %>
+
+
+<% end %>

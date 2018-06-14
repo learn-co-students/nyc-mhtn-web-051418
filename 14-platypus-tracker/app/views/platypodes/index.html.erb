@@ -1,0 +1,10 @@
+<ol>
+  <% @platypodes.each do |platypus| %>
+    <li>
+      <%= link_to platypus.name, platypus_path(platypus) %>
+      <%= form_for platypus, :html => { :method => :delete } do |form| %>
+        <%= form.submit %>
+      <% end %>
+    </li>
+  <% end %>
+</ol>
