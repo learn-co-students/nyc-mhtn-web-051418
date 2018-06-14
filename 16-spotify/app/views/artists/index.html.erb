@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Artists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @artists.each do |artist| %>
+      <tr>
+        <td><%= artist.name %></td>
+        <td><%= link_to 'Show', artist %></td>
+        <td><%= link_to 'Edit', edit_artist_path(artist) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Artist', new_artist_path %>

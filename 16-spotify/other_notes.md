@@ -1,0 +1,5 @@
+  - Song            rails g model Song name duration:integer album:references
+  - Album           rails g model Album name artist:references
+  - Artist          rails g model Artist name
+  - Playlists       rails g model Playlist name  
+  - Playlisting     rails g model Playlisting song:references playlist:references sort_order:integer  

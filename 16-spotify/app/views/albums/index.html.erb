@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Albums</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Artist</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @albums.each do |album| %>
+      <tr>
+        <td><%= album.name %></td>
+        <td><%= album.artist_id %></td>
+        <td><%= link_to 'Show', album %></td>
+        <td><%= link_to 'Edit', edit_album_path(album) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Album', new_album_path %>

@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Playlists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @playlists.each do |playlist| %>
+      <tr>
+        <td><%= playlist.name %></td>
+        <td><%= link_to 'Show', playlist %></td>
+        <td><%= link_to 'Edit', edit_playlist_path(playlist) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Playlist', new_playlist_path %>

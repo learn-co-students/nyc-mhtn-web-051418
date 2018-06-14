@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Songs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Duration</th>
+      <th>Album</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @songs.each do |song| %>
+      <tr>
+        <td><%= song.name %></td>
+        <td><%= song.duration %></td>
+        <td><%= link_to song.album.name, song.album %></td>
+        <td><%= link_to 'Show', song %></td>
+        <td><%= link_to 'Edit', edit_song_path(song) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Song', new_song_path %>
