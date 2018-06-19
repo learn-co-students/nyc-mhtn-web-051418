@@ -1,0 +1,34 @@
+<%= form_with(model: entry, local: true) do |form| %>
+  <% if entry.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</h3>
+
+      <ul>
+      <% entry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+
+  <%# #we set this in the controller now
+  <div class="field">
+    <%= form.label :author_id 
+    <%= form.collection_select :author_id, @authors, :id, :name 
+  </div>
+  %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

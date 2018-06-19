@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Auth</title>
+    <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Quicksand|Raleway" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+    <header>
+      <ul class="header-menu">
+      <% if logged_in? %>
+        <li>
+          <%= logged_in_user.name %> is logged in!
+          <%= button_to "Logout", destroy_session_path, method: :delete %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "Register", new_user_path %>
+        </li>
+        <li>
+          <%= link_to "Login", new_session_path %>
+        </li>
+      <% end %>
+      </ul>
+      <h1>Automatic Blog</h1>
+    </header>
+    <main><%= yield %></main>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<%= form_with(model: user, local: true, url: sessions_path) do |form| %>
+  <% if @errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@errors.count, "error") %> prohibited this user from logging in:</h3>
+
+      <ul>
+      <% @errors.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :username %>
+    <%= form.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Log in" %>
+  </div>
+<% end %>

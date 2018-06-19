@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @entry.name %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @entry.body %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= link_to @entry.author.name, @entry.author %>
+</p>
+
+<%= logged_in_as?(@entry.author_id) ? (link_to 'Edit', edit_entry_path(@entry)) : "" %>

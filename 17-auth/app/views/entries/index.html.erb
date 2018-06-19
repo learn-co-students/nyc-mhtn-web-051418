@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Entries</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Author</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entries.each do |entry| %>
+      <tr>
+        <td><%= entry.name %></td>
+        <td><%= link_to entry.author.name, entry.author %></td>
+        <td><%= link_to 'Show', entry %></td>
+        <% if logged_in_as?(entry.author_id) %>
+        <td>
+          <%= link_to 'Edit', edit_entry_path(entry) %>
+        </td>
+        <td>
+          <%= button_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+        <% else %>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Entry', new_entry_path %>

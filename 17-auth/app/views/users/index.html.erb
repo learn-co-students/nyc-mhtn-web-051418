@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Users</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to 'Show', user %></td>
+        <% if logged_in_as?(user.id) %>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <% else %>
+          <td>&nbsp;</td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>
