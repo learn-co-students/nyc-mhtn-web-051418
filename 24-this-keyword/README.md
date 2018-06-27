@@ -18,4 +18,6 @@ Code associated to the `JS this` lecture
 * How do we instrument `this`
 * P.S. arrow function, strict mode (class definitions) and arrow functions as methods
 
-> MDN `this` article: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
+## Resources
+* [MDN `this` article](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
+* [Lecture REPL](https://repl.it/repls/SlipperyColossalNumerators)
