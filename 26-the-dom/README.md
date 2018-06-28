@@ -4,7 +4,7 @@ Code associated to the Document Object Model lecture
 
 ## Outline
 
-* Orchestration, paintbrushes and the canvas
+* Orchestration, paintbrushes (JS and CSS) and the canvas
 * An instrument for expression or utility
 * From a string to a page
 * From a static page to an interactive experience
