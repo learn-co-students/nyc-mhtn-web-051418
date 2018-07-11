@@ -1,0 +1,32 @@
+{
+  "icecreams": [
+    {
+      "id": 1,
+      "name": "Lexical chocolate",
+      "ingredients": [
+        "scope",
+        "chocolate"
+      ]
+    },
+    {
+      "name": "IIFI Vanilla",
+      "ingredients": [],
+      "id": 2
+    }
+  ],
+  "gelati": [
+    {
+      "id": 1,
+      "name": "Lexical chocolate",
+      "ingredients": [
+        "scope",
+        "chocolate"
+      ]
+    },
+    {
+      "name": "IIFI Vanilla",
+      "ingredients": [],
+      "id": 2
+    }
+  ]
+}
