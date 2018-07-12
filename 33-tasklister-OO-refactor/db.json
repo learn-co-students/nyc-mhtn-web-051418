@@ -1,0 +1,22 @@
+{
+  "lists": [
+    {
+      "id": 1,
+      "title": "Stuff I need to review before the code challenge"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "description": "Desc of task",
+      "priority": "low",
+      "listId": 1
+    },
+    {
+      "description": "Desc of task number two",
+      "priority": "High",
+      "listId": 1,
+      "id": 2
+    }
+  ]
+}
