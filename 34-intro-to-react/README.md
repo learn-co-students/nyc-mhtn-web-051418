@@ -106,7 +106,28 @@ export default App;
   - Expressions Evaluate
   - [Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions): An expression is any valid unit of code that resolves to a value.
 
-## Extras
+**JSX Attributes Example:**
+
+- Attributes we'll see are also our `props` for Components.
+- They need some value assigned to them which is either a string or whatever an expression, `{}`, evaluates to.
+
+```javascript
+import logo from './logo.svg';
+
+// ... somewhere in render
+
+<img src={logo} alt="some image" />
+```
+
+### JSX Extras / Gotchas
 
 Commenting in JSX
 - `{/* commented */}`
+
+Any JavaScript reserved words have special names in JSX attributes:
+- `class` => `className`
+- `for` => `htmlFor`
+
+Data and aria attributes are special. They keep kebab-casing:
+- `data-attribute`
+- `aria-attribute`
