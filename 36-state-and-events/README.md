@@ -3,13 +3,13 @@ State & Events
 
 ## SWBAT
 
-- [ ] Learn about event handlers in React
-- [ ] Understand why we have synthetic events
-- [ ] Learn the difference between props and state, and why one would use one or the other
-- [ ] Instantiate state in and out of the constructor
-- [ ] Create event handler callbacks that manipulate state
-- [ ] Trigger rerenders by calling
-- [ ] Manipulate the DOM by changing values in state
+- [x] Learn about event handlers in React
+- [x] Understand why we have synthetic events
+- [x] Learn the difference between props and state, and why one would use one or the other
+- [x] Instantiate state in and out of the constructor
+- [x] Create event handler callbacks that manipulate state
+- [x] Trigger rerenders by calling
+- [x] Manipulate the DOM by changing values in state
 - [ ] Get more familiarity with component hierarchy and the flow of information
 
 ## Lecture Notes

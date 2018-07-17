@@ -29,7 +29,11 @@ JSX & Props
 - Single Responsibility Principle is used to identify components (most of which are reusable)
 - `import` / `export`
   - You can do everything in one file, but please don't!
-- declarative programming
+- **Declarative vs. Imperative**
+  - Declarative _declares_ what should happen.
+  - Imperative is where you _instruct_ how to make things happen.
+  - Abstraction, abstraction, abstraction.
+    - Imperative is just abstraction on more lower level imperative stuff.
   - our renders should read like instructions on what to display to the screen
 
 ### Component Extras
