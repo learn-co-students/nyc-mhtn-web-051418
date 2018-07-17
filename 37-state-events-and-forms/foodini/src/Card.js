@@ -10,7 +10,7 @@ class Card extends Component {
 		const allergensArray = ingredientsArray.slice(ingredientsArray.length / 2);
 
 		return (
-			<div className="card">
+			<div className="card" style={{ zIndex: this.props.order }}>
 				<h1>{this.props.title}</h1>
 				<List listOfThings={ingredientsArray} />
 				<Carousel src={this.props.thumbnail} alt={this.props.title} />

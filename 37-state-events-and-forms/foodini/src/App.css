@@ -72,3 +72,13 @@ div.card {
 	position: absolute;
 	overflow: hidden;
 }
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+label, input {
+	font-size: 18px;
+	margin: 10px;
+}

@@ -3,20 +3,12 @@ State, Events, & Forms
 
 ## SWBAT
 
-- [x] Learn about event handlers in React
-- [x] Understand why we have synthetic events
-- [x] Learn the difference between props and state, and why one would use one or the other
-- [x] Instantiate state in and out of the constructor
-- [x] Create event handler callbacks that manipulate state
-- [x] Trigger rerenders by calling
-- [x] Manipulate the DOM by changing values in state
-
-- [ ] Implement conditional rendering
-- [ ] Debug the `event` object we get in our event handler callbacks
-- [ ] Write fully controlled forms
+- [x] Implement conditional rendering
+- [x] Debug the `event` object we get in our event handler callbacks
+- [x] Write fully controlled forms
 - [ ] Pass data up and down the component hierarchy with our callbacks
 - [ ] Get more familiarity with component hierarchy and the flow of information
-- [ ] Understand the VirtualDOM
+- [x] Understand the VirtualDOM
 
 ## Deliverables
 
