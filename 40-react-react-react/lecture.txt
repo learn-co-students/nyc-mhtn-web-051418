@@ -1,0 +1,54 @@
+Good morning everyone.
+My voice decided to unmount so today's lecture is going to be...
+interesting.
+This is going to be the best or worst idea ever.
+I may have Steven take over if it's not going well.
+Can everyone follow along so far?
+The core of the lecture will be to go over
+functional components
+presentational components
+and container components.
+We'll talk about the differences and when to use each.
+Along the way, we will try to write very clean react code.
+Any questions before we move on?
+Ok. I've built an app to help me speak.
+There are two parts to this app.
+The top half goes through a prewritten script.
+Just like this shell script that I'm running.
+The bottom half lets me type and speak.
+We are going to refactor this app to use functional, presentational, and container components.
+What components do you see?
+We can...
+write components in a much more concise way.
+When we don't need state or life cycle methods,
+and only have to render.
+We can write our components as functions.
+This is very similar to what we were doing with our foodini app.
+Remember back to when we had a render cards method.
+That could have been a functional component
+as all it's doing is helping us render all of the cards.
+In our react instructor app, what here is a component that just renders?
+Let's write it.
+Functional components are functions that return J S X.
+It takes in one argument.
+props
+And that's all there is to writing it.
+We can use it the same way we use class components.
+Class components are what we've been writing this whole time.
+They are called class components because they are classes.
+Functional components are called functional components because they are functions.
+Now for some syntax tricks you might see.
+What is this?
+Moving on...
+Presentational components are concerned with how things look.
+Container components are concerned with how things work.
+Think about that for a bit.
+How things look versus how things work.
+Now that you've thought about it, I'll say this.
+Presentational components are often written as functional components.
+Can anyone tell me why?
+In our react instructor app, what could be a container component?
+Let's refactor and write them.
+There each container has its own state and they don't care about the other.
+They end up being siblings to one another.
+Any questions about presentational vs container?
