@@ -11,7 +11,7 @@ React Router
 ## Objectives
 
 - [] Introduce React Router DOM and its documentation
-- [] Discuss what React Router allows us to do 
+- [] Discuss what React Router allows us to do
 - [] Demonstrate a Route and explain the difference between the `render` and `component` props
 - [] Demonstrate the use of `history`
 - [] Demonstrate dynamic routing and URL params
@@ -60,6 +60,11 @@ window.history.forward();
 ```
 
 Combine that with `if/else` logic and tracking history and you get `react-router`.
+
+### React Router API
+
+> To get your intuition in line with React Router’s, think about components, not static routes. Think about how to solve the problem with React’s declarative composability because nearly every “React Router question” is probably a “React question”.
+> [_source: React Router Philosophy_](https://reacttraining.com/react-router/web/guides/philosophy)
 
 ## Resources
 
