@@ -292,6 +292,7 @@ end
 
 **Local Storage, Cookies, etc.**
 
+- [StackOverflow: Local Storage vs Cookies](https://stackoverflow.com/questions/3220660/local-storage-vs-cookies)
 - [StackOverflow: Should JWT be stored in localStorage or cookie?](https://stackoverflow.com/questions/34817617/should-jwt-be-stored-in-localstorage-or-cookie)
 - [Auth0: Where to Store Tokens](https://auth0.com/docs/security/store-tokens#where-to-store-your-jwts)
 - [Where to Store your JWTs – Cookies vs HTML5 Web Storage](https://stormpath.com/blog/where-to-store-your-jwts-cookies-vs-html5-web-storage)
