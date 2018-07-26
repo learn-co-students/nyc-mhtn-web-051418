@@ -6,7 +6,7 @@ import NewRecipeForm from './NewRecipeForm'
 import Navbar from './Navbar'
 import Ad from './Ad'
 import { Route, Switch, withRouter } from 'react-router-dom'
-
+import Login from './Login';
 
 // http://www.recipepuppy.com/api/?i=beef&q=steak&p=1
 
@@ -22,14 +22,19 @@ class App extends Component {
 			clicks: 0,
 			page: "show",
 			showAd: false,
+			userId: null,
+			username: null,
 		}
 	}
 
 	componentDidMount(){
-	 fetch('https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?i=beef&q=steak&p=1')
+	 // fetch('https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?i=beef&q=steak&p=1')
+	 fetch('http://localhost:3000/recipes')
 	 .then(r => r.json())
 	 .then(res => {
-		 let recipes = res.results.map((r,idx) => {return {...r, id: idx+1}})
+		 // console.log(res);
+		 // let recipes = res.results.map((r,idx) => {return {...r, id: idx+1}})
+		 let recipes = res.map((r,idx) => {return {...r, id: idx+1}})
 
 		 // setTimeout(()=>this.setState({loaded: true}), 3000)
 
@@ -39,6 +44,25 @@ class App extends Component {
 			 loaded: true
 		 })
 	 })
+	 fetch('http://localhost:3000/users', {
+		 method: 'GET',
+		 headers: {
+			 'Content-Type': 'application/json',
+			 'Authorization': localStorage.getItem('token'),
+		 }
+	 })
+	 	.then(res => res.json())
+		.then(json => {
+			console.log(json);
+			this.setState()
+		})
+	}
+
+	setUser = (userId, username) => {
+		this.setState({
+			userId,
+			username,
+		})
 	}
 
 	toggleAd = () => {
@@ -124,6 +148,8 @@ class App extends Component {
 	// }
 
 	render() {
+		console.log(this.state)
+
 		if (this.state.showAd){
 			return <Ad toggleAd={this.toggleAd} />
 		} else {
@@ -131,6 +157,7 @@ class App extends Component {
 				<Fragment>
 					<Route path="/" component={Navbar}/>
 					<Switch>
+						<Route path='/login' render={(routerProps) => <Login {...routerProps} setUser={this.setUser} />} />
 						<Route path="/recipes/new" render={(routerProps) => <NewRecipeForm {...routerProps} handleSubmit={this.handleSubmit}/>}/>
 						<Route path="/recipes/:id/edit" render={(routerProps) => {
 							let id = routerProps.match.params.id

@@ -1,15 +1,6 @@
 React JWT Auth
 ==============
 
-## SWBAT
-
-- [ ] Explain the difference between Authentication vs. Authorization
-- [ ] Authenticate via a basic controller action in Rails triggered by a `fetch`
-- [ ] Store user data in state on login/signup
-- [ ] Implement localStorage to store identifying information about a user in the browser (just a user ID for now)
-- [ ] Automatically fetch user information based on contents of localStorage for already logged-in users
-
-
 ## Objectives
 
 ### Morning (Rails)
@@ -17,19 +8,19 @@ React JWT Auth
 - Roadmap of React/Rails JWT auth
   - The Big Picture
   - Example: https://bit.ly/2KLIv25
-  - Planning / Code Organization
+  - [ ] Planning / Code Organization
 - Tokens and signing
   - What is JWT?
 - How to create tokens in Ruby
   - ruby-jwt
-  - using dotenv-rails to hide your encryption key
+  - [ ] using dotenv-rails to hide your encryption key
 - How to use tokens to secure a Rails API
-  - Authentication
+  - [ ] Authentication
     - has_secure_password && password_digest
     - validation
-    - Headers
+    - [ ] Headers
       - Authorization: Token token=123123123
-  - Authorization
+  - [ ] Authorization
 
 ### Afternoon (React)
 
