@@ -30,6 +30,10 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def logged_in?
+    !!decoded_token
+  end
+
   def authenticate
     # this works
   #   if (!!decoded_token)
@@ -40,7 +44,7 @@ class ApplicationController < ActionController::API
   #     }, status: :unauthorized
   #   end
   # end
-    if !decoded_token
+    if !logged_in?
       render json: {
         message: 'Authorization failed.'
       }, status: :unauthorized
@@ -53,6 +57,14 @@ class ApplicationController < ActionController::API
       render json: {
         message: 'Authorization failed.'
       }, status: :unauthorized
+    end
+  end
+
+  def get_token_payload(key)
+    begin
+      decoded_token[0][key]
+    rescue NoMethodError => e
+      nil
     end
   end
 

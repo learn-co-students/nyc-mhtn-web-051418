@@ -7,6 +7,7 @@ import Navbar from './Navbar'
 import Ad from './Ad'
 import { Route, Switch, withRouter } from 'react-router-dom'
 import Login from './Login';
+import Adapter from './Adapter';
 
 // http://www.recipepuppy.com/api/?i=beef&q=steak&p=1
 
@@ -29,33 +30,46 @@ class App extends Component {
 
 	componentDidMount(){
 	 // fetch('https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?i=beef&q=steak&p=1')
-	 fetch('http://localhost:3000/recipes')
-	 .then(r => r.json())
-	 .then(res => {
-		 // console.log(res);
-		 // let recipes = res.results.map((r,idx) => {return {...r, id: idx+1}})
-		 let recipes = res.map((r,idx) => {return {...r, id: idx+1}})
 
-		 // setTimeout(()=>this.setState({loaded: true}), 3000)
-
-		 this.setState({
-			 recipes,
-			 currentRecipe: recipes[0],
-			 loaded: true
-		 })
-	 })
-	 fetch('http://localhost:3000/users', {
-		 method: 'GET',
-		 headers: {
-			 'Content-Type': 'application/json',
-			 'Authorization': localStorage.getItem('token'),
-		 }
-	 })
-	 	.then(res => res.json())
+	 Adapter.getCurrentUser()
 		.then(json => {
 			console.log(json);
-			this.setState()
+			this.setState({
+				userId: json.id,
+				username: json.username,
+			}, () => {
+				this.loadRecipes(this.state.userId);
+			})
 		})
+		.catch(err => {
+			// console.warn(err);
+			Adapter.deleteToken();
+			this.props.history.push('/login');
+		})
+	}
+
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		console.log('update', this.state, prevState);
+		if (this.state.userId && prevState.userId !== this.state.userId) {
+			this.loadRecipes(this.state.userId);
+		}
+	}
+
+	loadRecipes = (id) => {
+		Adapter.getUserRecipes(id)
+			.then(res => {
+				console.log(res);
+				// let recipes = res.results.map((r,idx) => {return {...r, id: idx+1}})
+				let recipes = res.map((r,idx) => {return {...r, id: idx+1}})
+
+				// setTimeout(()=>this.setState({loaded: true}), 3000)
+
+				this.setState({
+					recipes,
+					currentRecipe: recipes[0],
+					loaded: true
+				})
+			})
 	}
 
 	setUser = (userId, username) => {
@@ -147,6 +161,14 @@ class App extends Component {
 	//  }
 	// }
 
+	logout = () => {
+		this.setState({
+			userId: null,
+			username: null,
+			recipes: [],
+		})
+	}
+
 	render() {
 		console.log(this.state)
 
@@ -155,16 +177,24 @@ class App extends Component {
 		} else {
 			return (
 				<Fragment>
-					<Route path="/" component={Navbar}/>
+					<Route path="/" render={(routerProps) => <Navbar {...routerProps} logout={this.logout}/>}/>
 					<Switch>
 						<Route path='/login' render={(routerProps) => <Login {...routerProps} setUser={this.setUser} />} />
-						<Route path="/recipes/new" render={(routerProps) => <NewRecipeForm {...routerProps} handleSubmit={this.handleSubmit}/>}/>
-						<Route path="/recipes/:id/edit" render={(routerProps) => {
-							let id = routerProps.match.params.id
-							let foundRecipe = this.state.recipes.find((r) => r.id === parseInt(id))
-							return <NewRecipeForm {...routerProps} recipe={foundRecipe} handleSubmit={this.handleSubmit}/>
-						}}/>
-						<Route path="/recipes" render={() => <RecipeContainer recipes={this.state.recipes} likes={this.state.like} dislikes={this.state.dislike} like={this.like} dislike={this.dislike} /> }/>
+						{
+							!!Adapter.getToken() ?
+								<Fragment>
+									<Route path="/recipes/new" render={(routerProps) => <NewRecipeForm {...routerProps} handleSubmit={this.handleSubmit}/>}/>
+									<Route path="/recipes/:id/edit" render={(routerProps) => {
+										let id = routerProps.match.params.id
+										let foundRecipe = this.state.recipes.find((r) => r.id === parseInt(id))
+										return <NewRecipeForm {...routerProps} recipe={foundRecipe} handleSubmit={this.handleSubmit}/>
+									}}/>
+									<Route path="/recipes" render={() => <RecipeContainer recipes={this.state.recipes} likes={this.state.like} dislikes={this.state.dislike} like={this.like} dislike={this.dislike} /> }/>
+								</Fragment>
+							:
+								null
+						}
+
 					</Switch>
 				</Fragment>
 			);

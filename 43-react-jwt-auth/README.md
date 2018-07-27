@@ -5,38 +5,43 @@ React JWT Auth
 
 ### Morning (Rails)
 
-- Roadmap of React/Rails JWT auth
+- [x] Roadmap of React/Rails JWT auth
   - The Big Picture
-  - Example: https://bit.ly/2KLIv25
-  - [ ] Planning / Code Organization
-- Tokens and signing
-  - What is JWT?
-- How to create tokens in Ruby
-  - ruby-jwt
-  - [ ] using dotenv-rails to hide your encryption key
-- How to use tokens to secure a Rails API
-  - [ ] Authentication
-    - has_secure_password && password_digest
-    - validation
-    - [ ] Headers
-      - Authorization: Token token=123123123
-  - [ ] Authorization
+  - [x] Example: https://bit.ly/2KLIv25
+  - [-] Planning / Code Organization
+- [x] Tokens and signing
+  - [x] What is JWT?
+- [x] How to create tokens in Ruby
+  - [x] ruby-jwt
+  - [x] using dotenv-rails to hide your encryption key
+- [x] How to use tokens to secure a Rails API
+  - [x] Authentication
+    - [x] has_secure_password && password_digest
+    - [x] validation
+    - [x] Headers
+      - [x] Authorization: Token token=123123123
+  - [x] Authorization
 
 ### Afternoon (React)
 
-- Using JWT with JavaScript
-  - `fetch` to get JWT token.
-  - `fetch` + JWT token to test our auth'ed endpoints.
+- [x] Using JWT with JavaScript
+  - [x] `fetch` to get JWT token.
+  - [x] `fetch` + JWT token to test our auth'ed endpoints.
 - Incorporating Auth in React
-  - Explore existing codebase.
-  - Add registration functionality.
-  - Add login functionality.
-    - Save our JWT token somewhere. Hmm... where?
-    - Show that we are logged in somewhere.
-  - Add auth'ed snacks fetching.
-  - Add auth'ed my-snacks fetching.
-  - Add `Redirect`s to protect our routes (react-router returns!).
-  - Add logout functionality.
+  - [x] Explore existing codebase.
+  - [ ] Add registration functionality.
+  - [x] Add login functionality.
+    - [x] Save our JWT token somewhere. Hmm... where?
+    - [ ] Show that we are logged in somewhere.
+  - [ ] Add auth'ed user fetching.
+  - [ ] Add auth'ed recipes fetching.
+  - [ ] Add `push`es and `Redirect`s to protect our routes.
+  - [ ] Add logout functionality.
+
+### Rollover
+
+- [ ] Everything unfinished above.
+- [ ] Code review.
 
 ## Lecture Notes (Rails)
 

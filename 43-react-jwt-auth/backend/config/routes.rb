@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # get '/users/:id/', to: 'users#show'
   # post '/users/', to: 'users#create'
 
+  get '/current_user', to: 'users#current_user'
+
   resources :sessions, only: [:create] # login here
   # post '/sessions/', to: 'sessions#create'
 

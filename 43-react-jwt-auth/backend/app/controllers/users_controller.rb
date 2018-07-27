@@ -82,6 +82,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def current_user
+    @user = User.find_by(id: get_token_payload('sub'))
+
+    if (!!@user)
+      render json: @user
+    else
+      render json: {
+        message: 'Invalid token.'
+      }, status: :unauthorized
+    end
+  end
+
   def users_recipes
     @user = User.find_by(id: params[:user_id])
 
