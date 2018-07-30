@@ -1,8 +1,15 @@
 import React, { Fragment } from 'react'
 import Card from './Card';
 import Button from './Button';
+import withColor from './hocs/withColor';
 
 class RecipeContainer extends React.Component{
+  constructor(props) {
+    super(props);
+
+    console.log('RecipeContainer', this.props);
+  }
+
   renderCards() {
     return this.props.recipes.map((r, index) => (
       <Card
@@ -25,7 +32,7 @@ class RecipeContainer extends React.Component{
         </Fragment>
       :
         <Fragment>
-          <div className="card-container">
+          <div className="card-container" style={{backgroundColor: this.props.color}}>
             {this.renderCards()}
           </div>
 
@@ -37,4 +44,4 @@ class RecipeContainer extends React.Component{
   }
 }
 
-export default RecipeContainer
+export default RecipeContainer; // withLoading(RecipeContainer, Adapter.getRecipes); //withColor(RecipeContainer, 'red');

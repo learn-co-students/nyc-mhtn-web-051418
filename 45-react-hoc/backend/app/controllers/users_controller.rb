@@ -95,6 +95,8 @@ class UsersController < ApplicationController
   end
 
   def users_recipes
+    # byebug
+
     @user = User.find_by(id: params[:user_id])
 
     render json: @user.recipes

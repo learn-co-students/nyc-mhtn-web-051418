@@ -9,16 +9,12 @@ import { Route, Switch, withRouter } from 'react-router-dom'
 import Login from './Login';
 import Adapter from './Adapter';
 
-import withColor from './hocs/withColor';
-import withAuth from './hocs/withAuth';
 import withLoading from './hocs/withLoading';
+import withAuth from './hocs/withAuth';
 import withAd from './hocs/withAd';
 
-const OrangeRecipeContainer = withColor(RecipeContainer, 'orange');
-
-const AdRecipeContainer = withAd(RecipeContainer);
 const AdNavbar = withAd(Navbar);
-const AdNewRecipeForm = withAd(NewRecipeForm);
+const AdRecipeContainer = withAd(RecipeContainer);
 
 // http://www.recipepuppy.com/api/?i=beef&q=steak&p=1
 
@@ -26,45 +22,39 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 
-		console.log('App', this.props);
-
-		let recipes = [];
-		if (this.props.initialData) {
-			recipes = this.props.initialData.map((r,idx) => {return {...r, id: idx+1}})
-		}
+		console.log('%c constructor', 'color: blue', this.props);
 
 		this.state = {
-			recipes,
-			currentRecipe: recipes[0],
+			recipes: this.props.initialData,
+			currentRecipe: this.props.initialData[0],
 			like: 0,
 			dislike: 0,
-			// clicks: 0,
+			clicks: 0,
 			page: "show",
-			// showAd: false,
-			userId: this.props.userId,
-			username: this.props.username,
+			showAd: false,
+			userId: null,
+			username: null,
 		}
 	}
 
 	// componentDidMount(){
-	 // fetch('https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?i=beef&q=steak&p=1')
-	 // this.loadRecipes(this.state.userId);
-
-	 // Adapter.getCurrentUser()
-		// .then(json => {
-		// 	// console.log(json);
-		// 	this.setState({
-		// 		userId: json.id,
-		// 		username: json.username,
-		// 	}, () => {
-		// 		this.loadRecipes(this.state.userId);
-		// 	})
-		// })
-		// .catch(err => {
-		// 	// console.warn(err);
-		// 	Adapter.deleteToken();
-		// 	this.props.history.push('/login');
-		// })
+	//  // fetch('https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?i=beef&q=steak&p=1')
+	//
+	//  Adapter.getCurrentUser()
+	// 	.then(json => {
+	// 		// console.log(json);
+	// 		this.setState({
+	// 			userId: json.id,
+	// 			username: json.username,
+	// 		}, () => {
+	// 			this.loadRecipes(this.state.userId);
+	// 		})
+	// 	})
+	// 	.catch(err => {
+	// 		// console.warn(err);
+	// 		Adapter.deleteToken();
+	// 		this.props.history.push('/login');
+	// 	})
 	// }
 
 	// componentDidUpdate(prevProps, prevState, snapshot) {
@@ -98,19 +88,19 @@ class App extends Component {
 		}, () => console.log('setUser', this.state))
 	}
 
-	// toggleAd = () => {
-	// 	this.setState({
-	// 		showAd: !this.state.showAd
-	// 	})
-	// }
+	toggleAd = () => {
+		this.setState({
+			showAd: !this.state.showAd
+		})
+	}
 
 	componentDidUpdate(prevProps, prevState, snapshot){
-		// if (this.state.clicks === 3 && !this.state.showAd) {
-		// 	this.setState({
-		// 		clicks: 0,
-		// 		showAd: true
-		// 	})
-		// }
+		if (this.state.clicks === 3 && !this.state.showAd) {
+			this.setState({
+				clicks: 0,
+				showAd: true
+			})
+		}
 
 		// console.log('%c componentDidUpdate', 'color: red', this.state, prevState, prevProps);
 		if (this.state.userId && prevState.userId !== this.state.userId) {
@@ -152,7 +142,7 @@ class App extends Component {
 			recipes,
 			currentRecipe: recipes[0],
 			like: this.state.like + 1,
-			// clicks: this.state.clicks + 1,
+			clicks: this.state.clicks + 1,
 		})
 	}
 
@@ -164,7 +154,7 @@ class App extends Component {
 			recipes,
 			currentRecipe: recipes[0],
 			dislike: this.state.dislike + 1,
-			// clicks: this.state.clicks + 1,
+			clicks: this.state.clicks + 1,
 		})
 	}
 
@@ -208,7 +198,7 @@ class App extends Component {
 						!!Adapter.getToken() ?
 							<Switch>
 								{/* Fragment apparently doesn't work here. */}
-								<Route path="/recipes/new" render={(routerProps) => <AdNewRecipeForm {...routerProps} handleSubmit={this.handleSubmit}/>}/>
+								<Route path="/recipes/new" render={(routerProps) => <NewRecipeForm {...routerProps} handleSubmit={this.handleSubmit}/>}/>
 								<Route path="/recipes/:id/edit" render={(routerProps) => {
 									let id = routerProps.match.params.id
 									let foundRecipe = this.state.recipes.find((r) => r.id === parseInt(id))
@@ -236,23 +226,9 @@ class App extends Component {
 				//    { this.renderPage()}
 				//  </div>
 
-export default withRouter(withAuth(withLoading(App,
-
-	(id) => {
-		return Adapter.getUserRecipes(id)
-		// .then(res => {
-		// 	// console.log(res);
-		// 	// let recipes = res.results.map((r,idx) => {return {...r, id: idx+1}})
-		// 	let recipes = res.map((r,idx) => {return {...r, id: idx+1}})
-		//
-		// 	// setTimeout(()=>this.setState({loaded: true}), 3000)
-		//
-		// 	this.setState({
-		// 		recipes,
-		// 		currentRecipe: recipes[0],
-		// 		loaded: true
-		// 	})
-		// })
-	}
-		, true
-)));
+export default withRouter(withAuth(withLoading(App, (id) => {
+	return Adapter.getUserRecipes(id)
+		.then(res => {
+			return res.map((r,idx) => {return {...r, id: idx+1}})
+		})
+}, true)));

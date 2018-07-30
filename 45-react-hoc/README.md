@@ -10,6 +10,7 @@ React Higher Order Component (HOC)
 - Higher Order Components
 - withAuth
 - withLoading
+- withAd
 
 ## Resources
 
