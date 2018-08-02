@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux';
 
 class NewRecipeForm extends React.Component {
   constructor(props){
@@ -42,6 +43,8 @@ class NewRecipeForm extends React.Component {
   }
 
   render(){
+    console.log('NewRecipeForm render', this.props);
+
     return (
       <form onSubmit={(event) => this.props.handleSubmit(event, this.state)}>
           <label htmlFor="title">Recipe</label>
@@ -83,4 +86,11 @@ class NewRecipeForm extends React.Component {
   }
 }
 
-export default NewRecipeForm
+function mapStateToProps(state) {
+  return {
+    friends: state.friends,
+    friendArray: state.friendArray.map(f =>  f * 10)
+  }
+}
+
+export default connect(mapStateToProps)(NewRecipeForm);

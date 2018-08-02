@@ -12,6 +12,8 @@ import withAuth from '../hocs/withAuth';
 import withLoading from '../hocs/withLoading';
 import withAd from '../hocs/withAd';
 
+import { connect } from 'react-redux';
+
 const AdRecipeContainer = withAd(RecipeContainer);
 const AdNavbar = withAd(Navbar);
 const AdNewRecipeForm = withAd(NewRecipeForm);
@@ -147,4 +149,7 @@ class App extends Component {
 	}
 }
 
+// connect is a higher order function that returns a higher order component
+
+// connect()(App)
 export default withRouter(withAuth(withLoading(App, (id) => { return Adapter.getUserRecipes(id) }, true)));

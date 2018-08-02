@@ -6,5 +6,8 @@ import { BrowserRouter as Router } from 'react-router-dom'
 // import App from './example/App2';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<Router><App /></Router>, document.getElementById('root'));
+import { Provider } from 'react-redux';
+import store from './store';
+
+ReactDOM.render(<Provider store={store}><Router><App /></Router></Provider>, document.getElementById('root'));
 registerServiceWorker();

@@ -63,11 +63,15 @@ Redux **will** test your JavaScript knowledge to the **MAX**!!!
 
 _Our Pain Points_
 
-- passing state
-- routing
-- having objects that need to be mapped to render things
-- console logging (when and where)
-- debuggers are liars
+State issues
+- managing state
+- fairly large state
+- keeping track of when things were rendering
+- passing down many levels just to change something
+- multiple components responding to the same state
+- sibling components triggers changes
+- different pieces of state in different levels
+- instances with independent state
 
 _Common Pain Points_ (as said by others)
 
